@@ -16,9 +16,16 @@ git clone --depth 1 https://github.com/DongWonLee2/hackathon-kit /tmp/kit && bas
 cp /tmp/kit/AGENTS.md . && mkdir -p .agents/skills docs/agents figures && cp -r /tmp/kit/skills/. .agents/skills/ && cp /tmp/kit/seed/docs-agents/* docs/agents/ && printf '.agents/\n.scratch/\n' >> .gitignore
 ```
 
-웹 산출물(대시보드·서버)이 요구되면 `bash /tmp/kit/install.sh --web` 또는 `cp -r /tmp/kit/skills-web/. .agents/skills/`.
+과제가 요구하는 산출물에 따라 추가:
 
-Codex를 (재)시작하고 `/skills`에 15개(--web이면 22개)가 보이면 끝.
+| 플래그 | 언제 | 추가되는 것 |
+|---|---|---|
+| `--web` | 대시보드·서버 | impeccable, security-best-practices, blast-radius, create-verification-skill, codebase-design, vercel-react-best-practices, typescript-best-practices |
+| `--report` | 문서 파일(docx·pptx·xlsx)이나 구조 그림 | diagram-design(저장소에 포함) + Anthropic docx·pptx·xlsx(설치 시 anthropics/skills에서 받음, 네트워크 필요) |
+
+둘 다면 `--all`. 손으로는 `cp -r /tmp/kit/skills-web/. .agents/skills/`처럼 폴더를 복사하면 된다.
+
+Codex를 (재)시작하고 `/skills`에 15개(--web +7, --report +4)가 보이면 끝.
 
 ## 사용
 
@@ -64,6 +71,10 @@ AGENTS.md가 흐름을 끌고 간다. 직접 쳐야 하는 건 관문 5개뿐이
 
 `--web` 7개: `impeccable`(UI 계획·마감), `security-best-practices`(보안 점검), `blast-radius`(변경 영향 증명), `create-verification-skill`(앱 구동 검증 스킬 생성), `codebase-design`, `vercel-react-best-practices`, `typescript-best-practices`. React UI면 Meta [Astryx](https://github.com/facebook/astryx)를 npm으로 쓴다. 명령은 AGENTS.md 끝에.
 
+`--report` 4개: `diagram-design`(분석 흐름·인과 사슬 같은 구조 그림을 SVG/HTML로. 수치 그래프는 matplotlib), `docx`·`pptx`·`xlsx`(Anthropic. 보고서를 그 파일 형식으로 내라고 할 때. 의존 패키지는 사전 체험에서 확인). 구조 그림만 필요하면 Mermaid 코드블록으로도 충분하다.
+
+code-review는 코드 diff를 보는 스킬이라 데이터 자체는 안 본다. 그래서 AGENTS.md에 "분석 리뷰 체크리스트" 5개(정제 규칙 일치, 숫자마다 코드 줄, 원인 주장마다 교란 고정 비교, 시간 누수, 재현)를 두고 스펙 축 리뷰어에게 같이 넘기게 했다. 숫자 자체의 타당성은 `principle-explain-the-number`가 본다.
+
 출처: [mattpocock/skills](https://github.com/mattpocock/skills), [backnotprop/pstack](https://github.com/backnotprop/pstack), [obra/superpowers](https://github.com/obra/superpowers), [openai/skills](https://github.com/openai/skills), [vercel-labs/agent-skills](https://github.com/vercel-labs/agent-skills), [pbakaus/impeccable](https://github.com/pbakaus/impeccable). 전부 MIT 또는 Apache 2.0.
 
 ## 사전 체험에서 확인
@@ -73,6 +84,7 @@ AGENTS.md가 흐름을 끌고 간다. 직접 쳐야 하는 건 관문 5개뿐이
 3. `python3 -c "import pandas, matplotlib"`. 없으면 `pip install` 걸리는 시간
 4. 그래프 PNG가 플랫폼 Browser 미리보기로 보이는지
 5. `$grilling` 한 라운드 (2분 안에 끊기)
+6. 문서 파일 산출물이 있을 것 같으면 `node -e "require('pptxgenjs')"`, `python3 -c "import openpyxl"`, `which soffice pandoc`
 
 ## 폴백
 

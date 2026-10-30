@@ -28,7 +28,12 @@
 | skills-web/typescript-best-practices | backnotprop/pstack | skills/typescript-best-practices | 25abb38 | MIT | poteto |
 | skills-web/security-best-practices | openai/skills | skills/.curated/security-best-practices | 49f948f | 폴더 내 LICENSE.txt (Apache 2.0) | OpenAI |
 | skills-web/vercel-react-best-practices | [vercel-labs/agent-skills](https://github.com/vercel-labs/agent-skills) | skills/react-best-practices (폴더명만 프런트매터 name에 맞춤) | 1a2c79d | MIT | Vercel |
+| skills-report/diagram-design | [cathrynlavery/diagram-design](https://github.com/cathrynlavery/diagram-design) | skills/diagram-design | 0cf73c3 | MIT | Cathryn Lavery |
 | skills-web/impeccable | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) | .agents/skills/impeccable | 5e745ac | Apache 2.0 | Paul Bakaus |
+
+## 복사하지 않고 설치 시점에 받는 것
+
+`install.sh --report`는 [anthropics/skills](https://github.com/anthropics/skills)의 `docx`, `pptx`, `xlsx`를 설치할 때 원본에서 받는다. 이 세 스킬의 LICENSE.txt가 "All rights reserved"라 재배포하지 않는다. 사용은 공개 저장소의 공개 스킬을 그대로 쓰는 것이다.
 
 ## 왜 복사해 두나
 
