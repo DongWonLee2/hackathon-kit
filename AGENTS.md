@@ -11,6 +11,12 @@ Local markdown. 스펙과 이슈는 `.scratch/<feature>/`에 파일로 둔다. S
 ### Domain docs
 Single-context. `GLOSSARY.md`와 `docs/adr/`. See `docs/agents/domain.md`.
 
+## 진행 방식
+- 이 문서의 흐름을 **에이전트가 끌고 간다.** 사용자가 "다음", "진행해", "다음 가설"이라고 하면 현재 경과 시간에 맞는 다음 단계를 수행한다. 단계에 적힌 스킬은 설명이 맞으면 알아서 쓴다(tdd, code-review, diagnosing-bugs, verification-before-completion, jupyter-notebook).
+- 아래 스킬은 사람이 `$`로 불러야만 실행된다(제작자가 암시적 호출을 막아 둠). 그 단계에 오면 **멈추고 "지금 `$to-spec`을 칠 차례입니다"처럼 알려준다**: `$show-me-your-work` `$grill-with-docs` `$to-spec` `$implement` `$principle-explain-the-number` `$technical-writing` `$unslop`.
+- 결정 지점에서는 멈춘다: 질문 목록을 낸 뒤, grilling 라운드마다, 스펙을 쓴 뒤, 범위를 줄이려 할 때, 가설이 기각돼 방향을 바꿀 때. 사용자의 답 없이 스스로 결정하지 않는다. 결정은 사용자의 것이고 그 기록이 평가된다.
+- 단계가 끝나면 세 줄 보고(바뀐 파일 / 실행 명령과 결과 / 불확실한 점)와 함께 "다음 단계: …"를 한 줄 덧붙인다.
+
 ## 흐름 (경과 분 기준)
 - 0–10   `$show-me-your-work`로 `decisions.tsv`를 연다. README와 자료 설명을 한 번만 읽고 요구사항 표(필수/선택/상태)와 질문 목록(영향 순 3~5개, 기본 가정 포함)을 만든다. 사용자가 업무 담당자 에이전트에게 묻는다. 답을 기다리지 말고 기본 가정으로 진행한다.
 - 10–30  `$grill-with-docs` — 2라운드 안에 끝낸다. 결정은 `docs/adr/`, 용어는 `GLOSSARY.md`. 그다음 `$to-spec` → `.scratch/<feature>/spec.md`. 데이터 미션의 스펙은 아래 "스펙에 반드시 있어야 하는 것"을 따른다.

@@ -57,6 +57,22 @@ REPORT.md 써줘 ($technical-writing 기준, $unslop으로 다듬기), README �
 
 웹 산출물(대시보드·서버)이 요구되면 `bash /tmp/kit/install.sh --web`을 한 번 더 돌린다.
 
+### 직접 부를 것과 맡길 것
+
+전부 `$`로 칠 필요는 없다. AGENTS.md가 흐름을 끌고 가고, Codex는 단계에 적힌 스킬을 설명이 맞으면 알아서 쓴다(tdd, code-review, diagnosing-bugs, verification-before-completion). "다음", "진행해", "다음 가설"이면 된다.
+
+직접 쳐야 하는 건 **관문 5개**다. 제작자가 Codex 정책 파일(`agents/openai.yaml`의 `allow_implicit_invocation: false`, 또는 `disable-model-invocation: true`)로 암시적 호출을 막아 뒀기 때문이다. 사람이 결정한 뒤에 넘어가야 하는 지점이라서다.
+
+| 관문 | 경과 | 그 전에 내가 결정할 것 |
+|---|---|---|
+| `$show-me-your-work` | 0분 | — |
+| `$grill-with-docs <미션>` | 10분 | 담당자 답을 반영했나 |
+| `$to-spec` | 25분 | 라운드 답을 다 했나 |
+| `$implement spec.md …` | 30분 | 스펙 6항목을 확인했나 |
+| `$principle-explain-the-number` | 120분 | 보고서에 넣을 숫자가 정해졌나 |
+
+`$technical-writing`, `$unslop`도 명시 호출 전용이지만 "REPORT.md 써줘. technical-writing 기준으로, unslop으로 다듬어"처럼 문장에 넣으면 같이 돌아간다. Codex가 어떤 스킬을 건너뛴 것 같으면 그때 `$이름`으로 찌른다.
+
 ### 스킬 부르는 법
 
 - `$이름` 으로 직접 부른다. `/skills`를 치면 목록이 뜨고, `$`만 쳐도 자동완성된다.
