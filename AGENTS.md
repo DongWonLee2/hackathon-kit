@@ -12,7 +12,7 @@ Local markdown. 스펙과 이슈는 `.scratch/<feature>/`에 파일로 둔다. S
 Single-context. `GLOSSARY.md`와 `docs/adr/`. See `docs/agents/domain.md`.
 
 ## 진행 방식
-- 이 문서의 흐름을 **에이전트가 끌고 간다.** 사용자가 "다음", "진행해", "다음 가설"이라고 하면 현재 경과 시간에 맞는 다음 단계를 수행한다. 단계에 적힌 스킬은 설명이 맞으면 알아서 쓴다(tdd, code-review, diagnosing-bugs, verification-before-completion, jupyter-notebook).
+- 이 문서의 흐름을 **에이전트가 끌고 간다.** 사용자가 다음 할 일을 한 줄로 말하면(보통 가설·예상·확인할 교란 요인) 현재 경과 시간에 맞는 단계로 수행한다. 사용자가 예상 결과를 말했으면 그 예상을 decisions.tsv에 그대로 적고 실행 후 비교한다. 단계에 적힌 스킬은 설명이 맞으면 알아서 쓴다(tdd, code-review, diagnosing-bugs, verification-before-completion, jupyter-notebook).
 - 아래 스킬은 사람이 `$`로 불러야만 실행된다(제작자가 암시적 호출을 막아 둠). 그 단계에 오면 **멈추고 "지금 `$to-spec`을 칠 차례입니다"처럼 알려준다**: `$show-me-your-work` `$grill-with-docs` `$to-spec` `$implement` `$principle-explain-the-number` `$technical-writing` `$unslop`.
 - 결정 지점에서는 멈춘다: 질문 목록을 낸 뒤, grilling 라운드마다, 스펙을 쓴 뒤, 범위를 줄이려 할 때, 가설이 기각돼 방향을 바꿀 때. 사용자의 답 없이 스스로 결정하지 않는다. 결정은 사용자의 것이고 그 기록이 평가된다.
 - 단계가 끝나면 세 줄 보고(바뀐 파일 / 실행 명령과 결과 / 불확실한 점)와 함께 "다음 단계: …"를 한 줄 덧붙인다.
@@ -46,7 +46,8 @@ Single-context. `GLOSSARY.md`와 `docs/adr/`. See `docs/agents/domain.md`.
 - "완료"는 `$verification-before-completion`을 거친 뒤에만. 실행하지 않은 것은 완료라 하지 않는다. 보고는 바뀐 파일 / 실행 명령과 결과 / 불확실한 점 세 항목.
 - 오류·이상한 결과는 `$diagnosing-bugs`. 같은 수정을 3번 반복하지 않는다. 넘으면 멈추고 선택지를 보고한다.
 - 결정이 스펙·ADR과 달라지면 ADR을 추가하고(번호 이어서) decisions.tsv에 한 줄. 이 두 기록이 후속 서술형의 근거다.
-- git: 슬라이스마다 커밋. `git push`는 시도하지 않는다.
+- git: 슬라이스마다 커밋. 메시지는 `feat: 설비별 수율 분해 — 야간 가설의 교란 요인 확인용`처럼 무엇과 왜를 한 줄에. `git push`는 시도하지 않는다.
+- 이름 통일: 코드 변수·보고서 용어·채팅·커밋에서 같은 지표는 같은 이름으로 부른다. GLOSSARY.md의 용어를 쓴다.
 - 외부 자료를 참고하거나 차용하면 출처와 범위를 decisions.tsv와 COLLABORATION.md에 적는다. 결과물을 통째로 가져오지 않는다.
 - 토큰: 데이터 파일 전체를 출력하지 않는다(`head`, `describe`, 집계만). 저장소를 반복 탐색하지 않는다. 스킬 본문은 그 단계에서만 읽는다.
 - 시간은 `date +%H:%M`으로 확인해 적는다.
