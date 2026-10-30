@@ -2,7 +2,7 @@
 # 당일 설치. 작업공간 루트에서 실행. 기본 세트는 이 저장소 clone 한 번이면 끝(추가 네트워크 없음).
 #   git clone --depth 1 https://github.com/DongWonLee2/hackathon-kit /tmp/kit && bash /tmp/kit/install.sh
 #   bash /tmp/kit/install.sh --report   # 산출물이 docx/pptx/xlsx일 때 (anthropics/skills에서 받음, 네트워크 필요)
-# 출처와 원본 커밋은 VENDORED.md. 이전 구성은 태그 v1.
+# 출처와 원본 커밋은 VENDORED.md. 이전 구성은 브랜치 v1.
 set -u
 REPORT=0
 for a in "$@"; do case $a in

@@ -2,7 +2,7 @@
 
 Codex 응시 환경용 공개 스킬 묶음. 데이터 활용 AI 문제 해결 미션 기준. 직접 만든 스킬은 없고 공개 스킬을 수정 없이 복사해 뒀다(출처, 커밋, 라이선스: [VENDORED.md](VENDORED.md)). 직접 쓴 건 AGENTS.md, install.sh, 이 문서.
 
-이전 구성(스킬 15개와 웹 세트, to-spec과 implement 흐름)은 태그 `v1`에 있다. 그쪽으로 가려면 아래 clone에 `-b v1`을 붙인다.
+이전 구성(스킬 15개와 웹 세트, to-spec과 implement 흐름)은 브랜치 `v1`에 있다. 그쪽으로 가려면 아래 clone에 `-b v1`을 붙인다.
 
 ## 설치
 
