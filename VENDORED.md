@@ -14,6 +14,7 @@
 | skills/tdd | mattpocock/skills | skills/engineering/tdd | 59db609 | MIT | Matt Pocock |
 | skills/code-review | mattpocock/skills | skills/engineering/code-review | 59db609 | MIT | Matt Pocock |
 | skills/diagnosing-bugs | mattpocock/skills | skills/engineering/diagnosing-bugs | 59db609 | MIT | Matt Pocock |
+| skills/handoff | mattpocock/skills | skills/productivity/handoff | 59db609 | MIT | Matt Pocock |
 | seed/docs-agents/* | mattpocock/skills | skills/engineering/setup-matt-pocock-skills/{issue-tracker-local.md, domain.md} | 59db609 | MIT | Matt Pocock |
 | skills/show-me-your-work | [backnotprop/pstack](https://github.com/backnotprop/pstack) | skills/show-me-your-work | 25abb38 | MIT | poteto |
 | skills/principle-explain-the-number | backnotprop/pstack | skills/principle-explain-the-number | 25abb38 | MIT | poteto |

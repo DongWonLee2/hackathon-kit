@@ -18,7 +18,7 @@ cp /tmp/kit/AGENTS.md . && mkdir -p .agents/skills docs/agents figures && cp -r 
 
 웹 산출물(대시보드·서버)이 요구되면 `bash /tmp/kit/install.sh --web` 또는 `cp -r /tmp/kit/skills-web/. .agents/skills/`.
 
-Codex를 (재)시작하고 `/skills`에 14개(--web이면 21개)가 보이면 끝.
+Codex를 (재)시작하고 `/skills`에 15개(--web이면 22개)가 보이면 끝.
 
 ## 사용
 
@@ -40,7 +40,7 @@ AGENTS.md가 흐름을 끌고 간다. "다음", "진행해", "다음 가설"이�
 
 ## 스킬
 
-기본 14개.
+기본 15개.
 
 | 단계 | 스킬 | 역할 | 출처 |
 |---|---|---|---|
@@ -52,6 +52,7 @@ AGENTS.md가 흐름을 끌고 간다. "다음", "진행해", "다음 가설"이�
 | 구현 | `implement` | 스펙을 받아 tdd로 구현, 테스트, code-review, 커밋 | Matt Pocock |
 | 구현 | `tdd` | 빨강→초록. 정제·지표 함수에만 | Matt Pocock |
 | 구현 | `diagnosing-bugs` | 가설→재현→확인. 같은 수정을 두 번 하게 될 때 | Matt Pocock |
+| 구현 | `handoff` | 세션이 무거워지면 인계 문서를 쓰고 새 세션으로. 명시 호출 | Matt Pocock |
 | 구현 | `jupyter-notebook` | 산출물이 .ipynb일 때 템플릿 | OpenAI |
 | 검증 | `verification-before-completion` | "완료"는 명령을 지금 실행하고 출력을 본 뒤에만 | superpowers |
 | 검증 | `principle-explain-the-number` | 숫자마다 n·기간·노이즈, 다른 걸 재고 있을 가능성 배제 | pstack |
@@ -66,7 +67,7 @@ AGENTS.md가 흐름을 끌고 간다. "다음", "진행해", "다음 가설"이�
 ## 사전 체험에서 확인
 
 1. 위 clone 한 줄이 되는지. 안 되면 아래 폴백
-2. `/skills`에 14개
+2. `/skills`에 15개
 3. `python3 -c "import pandas, matplotlib"`. 없으면 `pip install` 걸리는 시간
 4. 그래프 PNG가 플랫폼 Browser 미리보기로 보이는지
 5. `$grilling` 한 라운드 (2분 안에 끊기)
