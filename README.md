@@ -1,13 +1,18 @@
 # hackathon-kit
 
-Codex 응시 환경에서 3시간 과제를 **스펙 주도(SDD)** 로 개발하기 위한 공개 스킬 묶음. 직접 만든 스킬은 없다. 사람이 오래 써서 검증된 것만 가져온다. 이 저장소에는 **어떤 스킬을 언제 쓰는지**(AGENTS.md)와 **설치 스크립트**(install.sh)만 있다.
+Codex 응시 환경에서 3시간 과제를 **스펙 주도(SDD)** 로 개발하기 위한 공개 스킬 묶음. 직접 만든 스킬은 없다. 사람이 오래 써서 검증된 공개 스킬을 **수정 없이 복사**해 두었고(출처·원본 커밋은 [VENDORED.md](VENDORED.md)), 직접 쓴 건 **어떤 스킬을 언제 쓰는지**(AGENTS.md)와 **설치 스크립트**(install.sh)뿐이다.
 
 선택 기준: 알려진 개발자나 회사가 실제로 쓰려고 만들었고 공개 저장소에서 유지되는 것 → Codex 지원이 명시된 것 → clone과 복사만으로 설치되는 것 → 3시간 과제에 맞는 무게.
 
 ```
 hackathon-kit/
-├── AGENTS.md     # 작업공간 루트에 복사. 데이터 미션 기준 흐름·시간 배분·규칙. Matt Pocock 스킬이 읽는 "Agent skills" 블록 포함
-├── install.sh    # 기본: 4개 저장소 → 14개 스킬.  --web: +7개 (웹 산출물이 요구될 때)
+├── AGENTS.md       # 작업공간 루트에 복사. 데이터 미션 기준 흐름·시간 배분·규칙. Matt Pocock 스킬이 읽는 "Agent skills" 블록 포함
+├── install.sh      # skills/ → .agents/skills/ 복사. --web 이면 skills-web/ 도. 네트워크 불필요
+├── skills/         # 기본 14개 (320KB)
+├── skills-web/     # 웹 산출물이 요구될 때 7개 (3.3MB, impeccable이 대부분)
+├── seed/           # Matt Pocock 스킬이 읽는 설정 파일 (docs/agents/)
+├── licenses/       # 원본 저장소 라이선스 사본
+├── VENDORED.md     # 폴더별 출처·원본 경로·커밋·라이선스
 └── README.md
 ```
 
@@ -18,7 +23,7 @@ hackathon-kit/
 ### 시험 당일 (응시 환경 터미널에서)
 
 ```bash
-# 1. 작업공간 루트에서 — 약 10초
+# 1. 작업공간 루트에서 — clone 한 번, 설치는 복사뿐
 git clone --depth 1 https://github.com/DongWonLee2/hackathon-kit /tmp/kit && bash /tmp/kit/install.sh
 
 # 2. Codex 시작 (이미 켜져 있었다면 껐다 켠다. 스킬은 시작할 때 스캔된다)
@@ -213,7 +218,9 @@ npx @astryxdesign/cli component Button --dense   # 컴포넌트 문서 (토큰 �
 git clone --depth 1 https://github.com/DongWonLee2/hackathon-kit /tmp/kit && bash /tmp/kit/install.sh
 ```
 
-스크립트가 하는 일: AGENTS.md 복사 → 4개 저장소에서 14개 스킬 폴더만(`--web`이면 7개 더) `.agents/skills/`로 복사 → Matt Pocock 스킬의 설정 파일(`docs/agents/issue-tracker.md`, `domain.md`)을 시드로 깔아 대화형 `setup-matt-pocock-skills`를 건너뜀 → `.gitignore`에 `.agents/` `.scratch/` 추가. 빈 작업공간 기준 약 10초.
+스크립트가 하는 일: AGENTS.md 복사 → `skills/` 14개(`--web`이면 `skills-web/` 7개 더)를 `.agents/skills/`로 복사 → Matt Pocock 스킬의 설정 파일(`docs/agents/issue-tracker.md`, `domain.md`)을 시드로 깔아 대화형 `setup-matt-pocock-skills`를 건너뜀 → `.gitignore`에 `.agents/` `.scratch/` 추가, `figures/` 생성. 네트워크는 clone 한 번뿐이고 설치는 1초.
+
+스킬을 저장소에 직접 넣은 이유: 당일 상류 저장소 5개의 네트워크·경로 변경에 기대지 않기 위해서다. 연습에서 테스트한 비트와 시험장에서 받는 비트가 같다. 출처는 VENDORED.md.
 
 설치 후 Codex를 (재)시작하고 `/skills`에 14개(--web이면 21개)가 보이는지 확인한다. 호출은 `$이름`.
 
@@ -232,7 +239,6 @@ git clone --depth 1 https://github.com/DongWonLee2/hackathon-kit /tmp/kit && bas
 | git clone 불가 | 아래 9줄을 AGENTS.md로 직접 친다. 그다음 "AGENTS.md 읽고 질문 목록부터 시작해" |
 | pandas 없음 | `pip install pandas matplotlib` 2분 안에 안 되면 표준 라이브러리(`csv`, `statistics`)로. 그래프는 표로 대신하고 한계에 적는다 |
 | npm 레지스트리 불가 (--web) | Astryx 대신 `$impeccable shape`로 UI 계획, 순수 CSS |
-| 부분 clone(`--sparse`) 실패 | install.sh가 전체 clone으로 재시도 |
 | impeccable 런처 다운로드 실패 | 스킬 본문의 폴백대로 PRODUCT.md/DESIGN.md를 직접 읽고 계속 |
 | 서브에이전트 도구 없음 | grilling은 사실 조사를 직접 하고, code-review는 두 축을 순서대로 한 세션에서 한다 |
 
@@ -265,6 +271,6 @@ clone이 막혔을 때 손으로 칠 AGENTS.md:
 
 ## 주의
 
-- 이 저장소에는 과제 관련 코드·힌트·보일러플레이트가 없어야 한다. 절차와 설치만. 넣기 시작하면 "결과물 통째 대체"나 "비공개 스킬 반입"으로 읽힐 수 있다.
+- 이 저장소에는 과제 관련 코드·힌트·보일러플레이트가 없어야 한다. 공개 스킬의 복사본과 절차뿐. 넣기 시작하면 "결과물 통째 대체"나 "비공개 스킬 반입"으로 읽힐 수 있다.
 - 공개 스킬과 Astryx를 가져다 쓴 사실은 COLLABORATION.md 외부 자료 항목에 적는다 (AGENTS.md에 규칙으로 들어 있다). 숨기지 않는 쪽이 안전하다.
 - 스킬 본문은 호출될 때만 읽힌다. 세션 시작 시 로드되는 건 14개의 이름·설명뿐이라 상시 비용은 작다.
