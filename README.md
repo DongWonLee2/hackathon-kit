@@ -41,7 +41,7 @@ AGENTS.md가 흐름을 끌고 간다. 직접 쳐야 하는 건 관문 5개뿐이
 | 25분 | `$to-spec` | spec.md에 아래 6항목 있는지 확인 |
 | 30분 | `$implement .scratch/<이름>/spec.md 첫 항목만: 로드, 정제, 기준 지표 1개, 그래프 1장, 커밋. 지표 하나는 다른 방법으로 교차 확인` | 생성된 코드 읽기 |
 | 60–120분 | `가설 2 설비별 차이. 예상: EQ-007이 1%p 이상 낮을 것. 야간에 EQ-007 비중이 높으니 설비 고정하고 야간 효과 다시 봐.` | 가설마다 **무엇을·왜·예상 결과**를 한 줄에. 채팅 로그가 채점 대상이다 |
-| 120분 | `$principle-explain-the-number` → `$code-review <첫 커밋 SHA>` | |
+| 120분 | `데이터 리뷰 돌려. AGENTS.md 절차대로, 대화 기록 없는 서브에이전트에 데이터·REPORT.md·run.py만 넘겨.` → `$principle-explain-the-number` → `$code-review <첫 커밋 SHA>` | 리뷰어 지적을 고치거나 한계에 적기 |
 | 140분 | `REPORT.md 써줘. 결론 10줄 먼저. technical-writing 기준으로 쓰고 unslop으로 다듬어. README 제출물 안내, COLLABORATION.md, 전체 재실행, 커밋.` | 필수 파일·저장 상태 확인 |
 | 160분 | 제출 | |
 
@@ -73,7 +73,7 @@ AGENTS.md가 흐름을 끌고 간다. 직접 쳐야 하는 건 관문 5개뿐이
 
 `--report` 4개: `diagram-design`(분석 흐름·인과 사슬 같은 구조 그림을 SVG/HTML로. 수치 그래프는 matplotlib), `docx`·`pptx`·`xlsx`(Anthropic. 보고서를 그 파일 형식으로 내라고 할 때. 의존 패키지는 사전 체험에서 확인). 구조 그림만 필요하면 Mermaid 코드블록으로도 충분하다.
 
-code-review는 코드 diff를 보는 스킬이라 데이터 자체는 안 본다. 그래서 AGENTS.md에 "분석 리뷰 체크리스트" 5개(정제 규칙 일치, 숫자마다 코드 줄, 원인 주장마다 교란 고정 비교, 시간 누수, 재현)를 두고 스펙 축 리뷰어에게 같이 넘기게 했다. 숫자 자체의 타당성은 `principle-explain-the-number`가 본다.
+code-review는 코드 diff를 보고, explain-the-number는 내가 낸 숫자를 내가 점검한다. 둘 다 데이터를 다시 열지 않는다. 그래서 AGENTS.md에 **데이터 리뷰** 절차를 두었다. 대화 기록 없는 서브에이전트가 데이터·REPORT.md·run.py만 받아 숫자를 다른 방법으로 재계산하고, 원인 주장마다 반대 설명을 데이터로 시험하고, 정제 규칙·기준 기간을 바꿔도 결론이 유지되는지 본다. 실행 출력이 있는 지적만 인정한다(pstack interrogate, EGM goldfish 방식을 규약으로 옮긴 것. 검증된 공개 스킬 중 이 역할을 하는 가벼운 것이 없어서다). 재료로 run.py가 정제 전후 감사표 `docs/data_audit.md`를 만든다.
 
 출처: [mattpocock/skills](https://github.com/mattpocock/skills), [backnotprop/pstack](https://github.com/backnotprop/pstack), [obra/superpowers](https://github.com/obra/superpowers), [openai/skills](https://github.com/openai/skills), [vercel-labs/agent-skills](https://github.com/vercel-labs/agent-skills), [pbakaus/impeccable](https://github.com/pbakaus/impeccable). 전부 MIT 또는 Apache 2.0.
 
