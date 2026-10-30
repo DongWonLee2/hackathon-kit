@@ -30,6 +30,14 @@ git clone --depth 1 https://github.com/DongWonLee2/hackathon-kit /tmp/kit && bas
 codex
 ```
 
+`install.sh`가 하는 일은 복사 네 가지뿐이다. 스크립트를 못 돌리거나 직접 하고 싶으면 이 한 줄이 같은 결과다:
+
+```bash
+cp /tmp/kit/AGENTS.md . && mkdir -p .agents/skills docs/agents figures && cp -r /tmp/kit/skills/. .agents/skills/ && cp /tmp/kit/seed/docs-agents/* docs/agents/ && printf '.agents/\n.scratch/\n' >> .gitignore
+```
+
+웹 산출물이 요구되면 `cp -r /tmp/kit/skills-web/. .agents/skills/` 한 줄 더. 빠뜨리면 안 되는 건 `AGENTS.md`(흐름), `docs/agents/`(Matt Pocock 스킬이 읽는 설정. 없으면 `to-spec`이 setup을 먼저 돌리라며 멈춘다), `.gitignore`(안 넣으면 스킬 폴더가 제출물에 커밋된다).
+
 Codex 안에서 `/model`로 권장 모델을 고르고 `/skills`에 14개가 보이면 준비 끝. 그다음은 순서대로 친다.
 
 ```
