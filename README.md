@@ -58,6 +58,41 @@ REPORT.md 써줘 ($technical-writing 기준, $unslop으로 다듬기), README �
 
 아래 [폴백](#폴백)의 9줄 AGENTS.md를 손으로 친다. 스킬 없이도 같은 흐름이 나온다.
 
+## 스킬 한눈에 보기
+
+기본 세트 14개. 시간 순서대로.
+
+| 단계 | 스킬 | 역할 | 언제 |
+|---|---|---|---|
+| 기록 | `show-me-your-work` | 결정 한 건당 한 줄 TSV 로그(시각/단계/결정/이유/증거/결과). 서술형 답의 재료 | 0분에 열고 끝까지 |
+| 설계 | `grilling` | 설계 트리를 라운드로 묻는다. 질문마다 권장 답이 붙어 "yes"로 진행 | 10분 |
+| 설계 | `domain-modeling` | 굳어진 용어는 GLOSSARY.md, 결정은 docs/adr/에 그 자리에서 기록 | grilling 중 자동 |
+| 설계 | `grill-with-docs` | 위 둘을 한 번에 부르는 진입점. 실제로 치는 건 이거 | 10분 |
+| 설계 | `to-spec` | 대화를 스펙으로 합성 → `.scratch/<이름>/spec.md`. 데이터 미션은 지표 정의·가설·기각 방법·정제 규칙이 들어가야 함 | 25분 |
+| 구현 | `implement` | 스펙을 받아 tdd로 구현, 테스트, code-review 호출, 커밋 | 30분 |
+| 구현 | `tdd` | 빨강→초록. 정제·지표 계산 함수에만. 탐색 코드엔 안 건다 | implement 안에서 |
+| 구현 | `diagnosing-bugs` | 가설→재현→확인. 같은 수정을 두 번 하게 될 때 | 필요 시 |
+| 구현 | `jupyter-notebook` | 산출물이 .ipynb일 때 experiment 템플릿으로 구조 잡기 | 스크립트 제출이면 안 씀 |
+| 검증 | `verification-before-completion` | "완료"는 명령을 지금 실행하고 출력을 본 뒤에만 | 슬라이스마다 |
+| 검증 | `principle-explain-the-number` | 숫자마다 n·기간·노이즈 폭, 다른 걸 재고 있을 가능성 배제 | 120분, 보고서 숫자마다 |
+| 검증 | `code-review` | 첫 커밋 이후 diff를 표준·스펙 두 축으로 병렬 리뷰 | 125분 |
+| 보고서 | `technical-writing` | 한 번에 읽히는 문장. 일 안 하는 단어 삭제, 짧은 일상어, 구체적 수치 | 140분, REPORT.md |
+| 보고서 | `unslop` | AI 티 제거(-ing 수식, "~뿐 아니라", 3개 묶기, 과장 형용사) | 150분, 마지막 손질 |
+
+`--web` 추가 7개 (대시보드·서버가 요구될 때만):
+
+| 스킬 | 역할 |
+|---|---|
+| `impeccable` | React가 아닌 UI의 shape(계획) → 편집 규칙 → polish(마감) |
+| `security-best-practices` | 언어·프레임워크별 보안 참조로 큰 취약점만 1회 점검 (python/js/ts/go) |
+| `blast-radius` | diff 밖에서 깨질 것을 찾고 안전 근거를 코드 실행으로 증명 |
+| `create-verification-skill` | 앱을 사용자처럼 구동하는 `verify-<app>` 스킬 생성 |
+| `codebase-design` | 모듈·인터페이스·심 어휘집. tdd가 심을 정할 때 참조 |
+| `vercel-react-best-practices` | React/Next 성능 규칙 |
+| `typescript-best-practices` | .ts/.tsx 편집 규칙 |
+
+각 스킬의 자세한 동작은 아래 [스킬별 역할](#스킬별-역할).
+
 ## 누가 만든 것을 쓰나
 
 | 출처 | 만든 사람 | 기본 세트 | `--web` 추가 |
