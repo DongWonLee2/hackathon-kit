@@ -14,6 +14,10 @@
 | skills/unslop | backnotprop/pstack | skills/unslop | 25abb38 | MIT | poteto |
 | skills/verification-before-completion | [obra/superpowers](https://github.com/obra/superpowers) | skills/verification-before-completion | 2ce8aa1 | MIT | Jesse Vincent |
 | skills/jupyter-notebook | [openai/skills](https://github.com/openai/skills) | skills/.curated/jupyter-notebook | 49f948f | 폴더 내 LICENSE.txt (Apache 2.0) | OpenAI |
+| skills/security-best-practices | openai/skills | skills/.curated/security-best-practices | 49f948f | 폴더 내 LICENSE.txt (Apache 2.0) | OpenAI |
+| skills/impeccable | [pbakaus/impeccable](https://github.com/pbakaus/impeccable) | .agents/skills/impeccable | 5e745ac | Apache 2.0 (`licenses/impeccable.LICENSE`) | Paul Bakaus |
+| skills-web/vercel-react-best-practices | [vercel-labs/agent-skills](https://github.com/vercel-labs/agent-skills) | skills/react-best-practices (폴더명만 프런트매터 name에 맞춤) | 1a2c79d | MIT | Vercel |
+| skills-web/typescript-best-practices | backnotprop/pstack | skills/typescript-best-practices | 25abb38 | MIT | poteto |
 
 ## 복사하지 않고 설치 시점에 받는 것
 
@@ -32,8 +36,10 @@
 | to-spec, implement, code-review, grill-with-docs, domain-modeling, seed/docs-agents | 스펙은 AGENTS.md 6항목으로 직접 쓰고, 설계 질문은 grilling으로 한다. implement와 code-review는 부를 때마다 리뷰 서브에이전트 둘을 띄워 토큰이 많이 든다. grill-with-docs와 implement는 Codex에 없는 "Skill tool"을 부른다. |
 | principle-explain-the-number | 성능 벤치마크용이고 키트에 없는 benchmark-checklist를 부른다. 데이터 숫자 점검은 AGENTS.md 규칙과 데이터 리뷰가 한다. |
 | technical-writing | unslop과 같은 보고서를 두 번 다듬는다. |
-| skills-web 7개(impeccable 등) | 화면 꾸밈은 채점 항목에 없고 프레임워크 설정이 180분 안에서 위험하다. 웹 결과물은 정적 HTML 한 장으로 만든다. |
+| blast-radius, create-verification-skill, codebase-design | 180분 과제에서 쓸 자리가 적다. 검증은 REQUIREMENTS.md와 요구사항 리뷰가 맡는다. |
 | skills-report/diagram-design | 5.8MB. 구조 그림은 Mermaid로 충분하다. |
+
+impeccable과 security-best-practices는 한때 뺐다가 다시 넣었다. 화면과 인증이 있는 과제에서는 디자인 품질과 보안 설정을 스킬 없이 맞추기 어렵다. vercel-react-best-practices와 typescript-best-practices는 `--web`으로 고른다.
 
 ## 다시 가져오기
 
